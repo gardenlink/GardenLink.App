@@ -1,0 +1,37 @@
+{
+  "name": "GardenLink.App",
+  "version": "0.0.1",
+  "engines": {
+    "node": "5.9.1"
+  },
+   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "2.4.1",
+    "express": "4.13.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gardenlink/GardenLink.App"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "jshint": "~0.9",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-less": "^0.11.0",
+    "grunt-contrib-jade": "~0.9.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-open": "~0.2.3",
+    "jshint-stylish": "~0.1.5",
+    "time-grunt": "~0.2.8",
+    "grunt-contrib-connect": "^0.8.0",
+    "load-grunt-tasks": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "connect-livereload": "^0.4.0",
+    "socket.io": ">= 0.9.6"
+  }
+}
