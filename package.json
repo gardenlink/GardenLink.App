@@ -6,7 +6,7 @@
   },
    "main": "index.js",
   "scripts": {
-    "postinstall": "grunt"
+    "start" : "node index.js"
   },
   "dependencies": {
     "ejs": "2.4.1",
