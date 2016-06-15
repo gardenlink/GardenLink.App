@@ -61,7 +61,7 @@
 			      <ul ng-repeat="dispositivo in dispositivos">
 					<li>
 				      <a href="#detailsPage" ng-click="onItemClicked(dispositivo)" class="item-link item-content">
-				        <div class="item-media"><i class="icon icon-f7"></i></div>
+				        <div class="item-media"><i class="icon icon-device"></i></div>
 				        <div class="item-inner">
 				          <div class="item-title">{{dispositivo.Nombre}}</div>
 				          <div class="item-after">{{dispositivo.Activo}}</div>
@@ -76,7 +76,7 @@
 			    <div class="list-block">
 			      <ul ng-repeat="relay in relays">
 			        <li class="item-content">
-			          <div class="item-media"><i class="icon icon-f7"></i></div>
+			          <div class="item-media"><i class="icon icon-gota"></i></div>
 			          <div class="item-inner">
 			            <div class="item-title">{{relay.Descripcion}}</div>
 			            <div class="item-after">
@@ -101,7 +101,19 @@
 			    <div class="list-block">
 			      <ul ng-repeat="sensor in sensores">
 					<li class="item-content">
-			          <div class="item-media"><i class="icon icon-f7"></i></div>
+					  
+					    <div ng-if="sensor.Tipo == 'Temperatura'">
+					        <div class="item-media"><i class="icon icon-temperatura"></i></div>
+					    </div>
+					    <div ng-if="sensor.Tipo == 'PH'">
+					        <div class="item-media"><i class="icon icon-calidad"></i></div>
+					    </div>
+					    <div ng-if="sensor.Tipo == 'EC'">
+					        <div class="item-media"><i class="icon icon-calidad"></i></div>
+					    </div>
+					    <div ng-if="sensor.Tipo == 'Lluvia'">
+					        <div class="item-media"><i class="icon icon-lluvia"></i></div>
+					    </div>
 			          <div class="item-inner">
 			            <div class="item-title">{{sensor.Descripcion}}</div>
 			            <div class="item-after"><span class="badge">{{sensor.Medicion.Valor}}</span></div>

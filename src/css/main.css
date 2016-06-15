@@ -1,1 +1,30 @@
 /* Add custom styles here */
+i.icon.icon-gota {
+   width: 32px;
+   height: 32px;
+   background-image: url("../img/gota_32x32.png");
+}
+
+i.icon.icon-temperatura {
+   width: 32px;
+   height: 32px;
+   background-image: url("../img/temperature_32x32.png");
+}
+
+i.icon.icon-calidad {
+   width: 32px;
+   height: 32px;
+   background-image: url("../img/probe_32x32.png");
+}
+
+i.icon.icon-lluvia {
+   width: 32px;
+   height: 32px;
+   background-image: url("../img/rain_32x32.png");
+}
+
+i.icon.icon-device {
+   width: 32px;
+   height: 32px;
+   background-image: url("../img/arduino_32x32.png");
+}
