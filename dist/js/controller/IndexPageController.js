@@ -80,7 +80,7 @@ function ($scope, $http, InitService,DataService,$interval) {
 		    TraerDatos();
 		 };
 	   
-	   $interval(function() { $scope.Reload(); }, 10000);
+	   $interval(function() { $scope.Reload(); }, 60000);
   });
   
 }]);
