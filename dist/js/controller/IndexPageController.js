@@ -18,13 +18,11 @@ function ($scope, $http, InitService,DataService,$interval) {
   	if (objeto.IdRelay) {
   		
   		angular.forEach($scope.relays, function(value, key) {
-		  
+		  console.log("ciclo");
   		  if (value.IdRelay == objeto.IdRelay) {
   		  	$scope.relays[key].Activo = !$scope.relays[key].Activo;
-  		  	var ret = DataService.relayClicked($scope.relays[key]);
-  		  	console.log(ret);
+  		  	DataService.relayClicked($scope.relays[key]);
   		  }
-  		
 		});
   	}
   	
@@ -34,21 +32,46 @@ function ($scope, $http, InitService,DataService,$interval) {
   
   
   DataService.addEventListener('relayClicked', function (relay) {
-  			console.log("relayClicked listener : ");
+  			DataService.putDataRelay(relay, function(error, data) {
+  				if (relay.Activo != data.Activo) {
+	  				var opt = { Relay : true };
+	  				TraerDatos(opt);
+  				}
+  			});
+  			
   		});
   
    
    var $$ = Dom7;
    
   
-  function TraerDatos(){
-  	   DataService.getData().then(function(result) {
-	   		$scope.dispositivos = result.data.Dispositivos;
-	   		$scope.sensores = result.data.Sensores;
-	   		$scope.relays = result.data.Relays;
-	   }, function(error) {
-	   	console.log(error);
-	   });
+  function TraerDatos(opt){
+  	   
+  	   if (opt && opt.Relay && opt.Relay == true)
+  	   {
+  	   		$scope.relays = null;
+  	   		DataService.getDataRelay().then(function(result) {
+  	   			console.log(result.data);
+  	   			$scope.relays = result.data;
+  	   		});
+  	   		
+  	   }
+  	   else
+  	   {
+		  //full reload
+	  	   $scope.dispositivos = null;
+	  	   $scope.sensores = null;
+	  	   $scope.motores = null;
+	  
+	  	   DataService.getData().then(function(result) {
+		   		$scope.dispositivos = result.data.Dispositivos;
+		   		$scope.sensores = result.data.Sensores;
+		   		$scope.relays = result.data.Relays;
+		   		$scope.motores = result.data.Motores;
+		   }, function(error) {
+		   	console.log(error);
+		   });
+	   }
   };
   
   InitService.addEventListener('ready', function () {
@@ -57,7 +80,7 @@ function ($scope, $http, InitService,DataService,$interval) {
 		    TraerDatos();
 		 };
 	   
-	   $interval(function() { $scope.Reload(); }, 30000);
+	   $interval(function() { $scope.Reload(); }, 10000);
   });
   
 }]);

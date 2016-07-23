@@ -33,17 +33,21 @@ GardenLink.angular.factory('DataService', ['$document','$http', function ($docum
 	
 	srv1.relayClicked = function (relay) {
 		
-		srv1.putDataRelay(relay);
-		/*
+		//return srv1.putDataRelay(relay);
+		
 		for (var i=0; i<eventListeners.relayClicked.length; i++) {
 			eventListeners.relayClicked[i](relay );
 		} 
-		*/
+		
 	};
 	
 	
 	srv1.getData = function() {
 		return $http.get('http://gardenlink.cl:9000/api/v1/servicio/consolidado');
+	};
+	
+	srv1.getDataRelay = function() {
+		return $http.get('http://gardenlink.cl:9000/api/v1/servicio/relays');
 	};
 	
 	srv1.getDataSensores = function(id) {
@@ -53,15 +57,23 @@ GardenLink.angular.factory('DataService', ['$document','$http', function ($docum
 			return $http.get('http://gardenlink.cl:9000/api/v1/servicio/sensores');
 	};
 	
-	srv1.putDataRelay = function(relay) {
+	srv1.putDataRelay = function(relay, callback) {
 	
 		
 		var data = {
     		path : "Activo", //debe venir sin comillas
     		value : relay.Activo
 		};
-		var r = $http.patch('http://gardenlink.cl:9000/api/v1/servicio/relays/' + relay.IdRelay, data);
-		console.dir(r);
+		$http.patch('http://localhost:9000/api/v1/servicio/relays/' + relay.IdRelay, data).success(function(data)
+		{
+			console.log(data);
+			
+			callback(null, data);
+			
+			
+		});
+		
+
 	};
 	
 	
