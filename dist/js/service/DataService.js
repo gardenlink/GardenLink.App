@@ -64,7 +64,7 @@ GardenLink.angular.factory('DataService', ['$document','$http', function ($docum
     		path : "Activo", //debe venir sin comillas
     		value : relay.Activo
 		};
-		$http.patch('http://localhost:9000/api/v1/servicio/relays/' + relay.IdRelay, data).success(function(data)
+		$http.patch('http://gardenlink.cl:9000/api/v1/servicio/relays/' + relay.IdRelay, data).success(function(data)
 		{
 			console.log(data);
 			
