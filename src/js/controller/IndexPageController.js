@@ -47,12 +47,16 @@ function ($scope, $http, InitService,DataService,$interval) {
   
   function TraerDatos(opt){
   	   
+  	   console.log(GardenLink);
+  	   	GardenLink.fw7.app.showPreloader();
+  	   
   	   if (opt && opt.Relay && opt.Relay == true)
   	   {
   	   		$scope.relays = null;
   	   		DataService.getDataRelay().then(function(result) {
   	   			console.log(result.data);
   	   			$scope.relays = result.data;
+  	   			GardenLink.fw7.app.hidePreloader();
   	   		});
   	   		
   	   }
@@ -68,6 +72,7 @@ function ($scope, $http, InitService,DataService,$interval) {
 		   		$scope.sensores = result.data.Sensores;
 		   		$scope.relays = result.data.Relays;
 		   		$scope.motores = result.data.Motores;
+		   		GardenLink.fw7.app.hidePreloader();
 		   }, function(error) {
 		   	console.log(error);
 		   });

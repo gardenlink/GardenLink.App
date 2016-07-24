@@ -57,6 +57,13 @@ GardenLink.angular.factory('DataService', ['$document','$http', function ($docum
 			return $http.get('http://gardenlink.cl:9000/api/v1/servicio/sensores');
 	};
 	
+	srv1.getDataMotores = function(id) {
+		if (id)
+			return $http.get('http://gardenlink.cl:9000/api/v1/servicio/motores/' + id);
+		else		
+			return $http.get('http://gardenlink.cl:9000/api/v1/servicio/motores');
+	};
+	
 	srv1.putDataRelay = function(relay, callback) {
 	
 		
