@@ -18,7 +18,7 @@ function ($scope, $http, InitService,DataService,$interval) {
   	if (objeto.IdRelay) {
   		
   		angular.forEach($scope.relays, function(value, key) {
-		  console.log("ciclo");
+		  
   		  if (value.IdRelay == objeto.IdRelay) {
   		  	$scope.relays[key].Activo = !$scope.relays[key].Activo;
   		  	DataService.relayClicked($scope.relays[key]);
@@ -31,24 +31,13 @@ function ($scope, $http, InitService,DataService,$interval) {
   
   
   
-  DataService.addEventListener('relayClicked', function (relay) {
-  			DataService.putDataRelay(relay, function(error, data) {
-  				if (relay.Activo != data.Activo) {
-	  				var opt = { Relay : true };
-	  				TraerDatos(opt);
-  				}
-  			});
-  			
-  		});
-  
    
    var $$ = Dom7;
    
   
   function TraerDatos(opt){
   	   
-  	   console.log(GardenLink);
-  	   	GardenLink.fw7.app.showPreloader();
+  	   	
   	   
   	   if (opt && opt.Relay && opt.Relay == true)
   	   {
@@ -73,17 +62,28 @@ function ($scope, $http, InitService,DataService,$interval) {
 		   		$scope.relays = result.data.Relays;
 		   		$scope.motores = result.data.Motores;
 		   		GardenLink.fw7.app.hidePreloader();
+		   		
 		   }, function(error) {
 		   	console.log(error);
+		   	GardenLink.fw7.app.hidePreloader();
 		   });
 	   }
   };
   
   InitService.addEventListener('ready', function () {
+  		GardenLink.fw7.app.showPreloader();
 		 TraerDatos();
 		$scope.Reload = function () {
+			GardenLink.fw7.app.showPreloader();
 		    TraerDatos();
 		 };
+		 
+		 //GardenLink.fw7.app.loginScreen();
+		 /*
+		GardenLink.fw7.app.modalLogin('Autenticacion', function (username, password) {
+        		GardenLink.fw7.app.alert('Thank you! Username: ' + username + ', Password: ' + password);
+    	});
+    	*/
 	   
 	   $interval(function() { $scope.Reload(); }, 60000);
   });
