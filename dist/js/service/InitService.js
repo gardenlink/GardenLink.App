@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global console, Framework7, GardenLink, $document*/ 
 
-GardenLink.angular.factory('InitService', ['$document', function ($document) {
+GardenLink.angular.factory('InitService', ['$document',function ($document) {
   'use strict';
 
   var pub = {},

@@ -12,7 +12,7 @@ GardenLink.angular.controller('DetailPageController', ['$scope', '$http', 'InitS
    var $$ = Dom7;
    
   
-	
+
   
   
 		function BuscarRelayByDevice(idDispositivo) {
@@ -42,6 +42,10 @@ GardenLink.angular.controller('DetailPageController', ['$scope', '$http', 'InitS
 	console.log("ID : " + id);
 	console.log("POS : " + posicion);
  }
+ 
+ 	$scope.onTouchmove = function($event) {
+	   console.log('touchmove event called');
+	}
 
   $scope.onItemClicked = function(objeto) {
   

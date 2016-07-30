@@ -28,3 +28,17 @@ i.icon.icon-device {
    height: 32px;
    background-image: url("../img/arduino_32x32.png");
 }
+
+i.icon.icon-motor {
+   width: 32px;
+   height: 32px;
+   background-image: url('../img/cog_32x32.png');
+}
+
+.range-slider input[type="range"]::-webkit-slider-thumb {
+   border: 2px solid;
+   border-color: silver;
+   background-color: white;
+   border-radius: 50%;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
